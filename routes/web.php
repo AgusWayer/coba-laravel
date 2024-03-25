@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DashboardPostController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -55,3 +56,5 @@ Route::post('/register', [RegisterController::class,'store'])->middleware('guest
 Route::get('/dashboard', function(){
     return view('dashboard.index');
 })->middleware('auth');
+Route::resource('/dashboard/posts',DashboardPostController::class)->middleware('auth')
+;
